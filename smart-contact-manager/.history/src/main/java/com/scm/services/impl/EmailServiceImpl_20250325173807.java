@@ -1,0 +1,30 @@
+package com.scm.services.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+
+import com.scm.services.EmailService;
+
+public class EmailServiceImpl implements EmailService{
+   
+    @Autowired
+    private JavaMailSender eMailSender;
+
+    @Override
+    public void sendEmail(String to, String subject, String body) {
+        Simple
+    }
+
+    @Override
+    public void sendEmailWithHtml() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'sendEmailWithHtml'");
+    }
+
+    @Override
+    public void sendEmailWithAttachment() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'sendEmailWithAttachment'");
+    }
+
+}

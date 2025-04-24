@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}">
+<head>
+    <title>error</title>
+</head>
+<body>
+    <div id="content" class="text-center mt-5 md:w-1/2 mx-auto">
+        <div data-th-replace="~{message :: massagebox}"></div>
+        <button class="bg-gray-900 text-white px-3 py-3 rounded mt-5">Login</button>
+    </div>
+
+    <script>
+        console.log("welcome to error page");
+    </script>
+</body>
+</html>
