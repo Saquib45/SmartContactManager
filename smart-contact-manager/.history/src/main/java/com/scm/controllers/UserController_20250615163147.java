@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.scm.entities.User;
+import com.scm.helper.Helper;
 import com.scm.services.UserService;
 
 @Controller

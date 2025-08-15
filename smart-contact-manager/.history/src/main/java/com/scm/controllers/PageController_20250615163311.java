@@ -110,8 +110,8 @@ public class PageController {
         
 
         //add message
-        message message1 = message.builder().content("Registration Successful").type(messageType.green).build();
-        session.setAttribute("message", message1);
+       message message1 = message.builder().content("Registration Successful").type(messageType.green).build();
+    session.setAttribute("message", message1);
 
         //redirectto login page
         return "redirect:/register";

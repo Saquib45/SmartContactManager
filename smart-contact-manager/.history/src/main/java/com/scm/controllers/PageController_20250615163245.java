@@ -19,7 +19,7 @@ import com.scm.services.UserService;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.GetMapping;
-// import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 
@@ -110,7 +110,7 @@ public class PageController {
         
 
         //add message
-        message message1 = message.builder().content("Registration Successful").type(messageType.green).build();
+       message message1 = message.builder().content("Registration Successful").type(messageType.green).build();
         session.setAttribute("message", message1);
 
         //redirectto login page

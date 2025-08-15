@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMethod;
-// import org.springframework.web.service.annotation.GetExchange;
+import org.springframework.web.service.annotation.GetExchange;
 
 import com.scm.entities.User;
 import com.scm.forms.UserForm;
@@ -19,7 +19,7 @@ import com.scm.services.UserService;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.GetMapping;
-// import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 
@@ -110,7 +110,7 @@ public class PageController {
         
 
         //add message
-        message message1 = message.builder().content("Registration Successful").type(messageType.green).build();
+       message message1 = message.builder().content("Registration Successful").type(messageType.green).build();
         session.setAttribute("message", message1);
 
         //redirectto login page

@@ -16,7 +16,7 @@ import com.scm.services.UserService;
 @RequestMapping("/user")
 public class UserController {
 
-    private Logger logger=LoggerFactory.getLogger(UserController.class);
+    // private Logger logger=LoggerFactory.getLogger(UserController.class);
    
     @Autowired
     private UserService userService;
