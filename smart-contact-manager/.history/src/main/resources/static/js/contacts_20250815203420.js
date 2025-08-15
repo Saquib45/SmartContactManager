@@ -1,7 +1,7 @@
 console.log("contact page is loaded")
 
-const baseURL = "http://localhost:8081";
-const baseURL = "https://www.scm20.site";
+const baseURL = "http://localhost:https://smartcontactmanager-production-acd4.up.railway.app";
+// const baseURL = "https://www.scm20.site";
 const viewContactModal = document.getElementById("view_contact_modal");
 
 // options with default values
@@ -73,10 +73,12 @@ async function loadContactdata(id) {
 
 async function deleteContact(id) {
   Swal.fire({
-    title: "Do you want to delete the contact?",
-    icon: "warning",
+    title: "Do you want to delete the Contact?",
+    icon:"warning",
     showCancelButton: true,
     confirmButtonText: "Delete",
+    confirmButtonColor: "#d33", // Red delete button
+    cancelButtonColor: "#3085d6",
   }).then((result) => {
     /* Read more about isConfirmed, isDenied below */
     if (result.isConfirmed) {
