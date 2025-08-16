@@ -65,13 +65,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class Helper {
     
-    private static String baseUrl;
-    
-    // Inject value into static field
     @Value("${baseurl}")
-    public void setBaseUrl(String baseUrl) {
-        Helper.baseUrl = baseUrl;
-    }
+    private String baseUrl;
     
     public static String getEmailOfLoggedInUser(Authentication authentication){
         //agar email ya password se login kiya hai to : email kaise nikalenge
@@ -102,7 +97,7 @@ public class Helper {
         }
     }
     
-    public static String getLinkForEmailVerification(String emailToken){
+    public String getLinkForEmailVerification(String emailToken){
         String link = baseUrl + "/auth/verify-email?token=" + emailToken;
         return link;
     }
