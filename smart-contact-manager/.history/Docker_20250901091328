@@ -1,0 +1,8 @@
+FROM maven:3.9.6-eclipse-temurin-17 AS build
+COPY . .
+RUN mvn -DskipTests package
+
+FROM eclipse-temurin:17-jdk
+COPY --from=build /target/*.jar snapshot.jar /app/scm2.0-0.0.1.jar
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "app.jar"]
