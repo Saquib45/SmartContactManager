@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserService {
 
 
         // user.setRoleList(List.of(AppConstants.ROLL_USER));
-        
+        user.addRole(AppConstants.ROLL_USER);
 
 
 

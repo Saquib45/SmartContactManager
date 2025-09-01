@@ -42,17 +42,7 @@ public class UserServiceImpl implements UserService {
         // user.seerPassword(userId);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
-
-
-
-
         // user.setRoleList(List.of(AppConstants.ROLL_USER));
-        
-
-
-
-
-
         logger.info(user.getProvider().toString());
         
 

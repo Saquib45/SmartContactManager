@@ -109,8 +109,6 @@
 
 
 
-
-
 package com.scm.entities;
 
 import java.util.*;
@@ -120,21 +118,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
 
 @Entity(name = "user")
 @Table(name = "users")
@@ -146,6 +131,7 @@ import lombok.Setter;
 public class User implements UserDetails {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String userId;
 
     @Column(name = "user_name", nullable = false)
@@ -171,7 +157,7 @@ public class User implements UserDetails {
     private boolean emailVerified = false;
     private boolean phoneVerified = false;
 
-    // self, google, facebook, twitter, linkedin, github
+    // self,google,facebook,twitter,linkedin,github
     @Enumerated(value = EnumType.STRING)
     private Providers provider = Providers.SELF;
 
@@ -180,20 +166,16 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private List<Contact> contacts = new ArrayList<>();
 
-    // Store roles as a comma-separated string instead of creating a new table
-    @Column(name = "roles")
-    private String roles; // e.g. "ROLE_USER,ROLE_ADMIN"
+    // FIX: Use entity for roles instead of ElementCollection
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private List<UserRole> roles = new ArrayList<>();
 
     private String emailToken;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        if (roles == null || roles.isEmpty())
-            return List.of();
-
-        return Arrays.stream(roles.split(","))
-                .map(String::trim)
-                .map(SimpleGrantedAuthority::new)
+        return roles.stream()
+                .map(role -> new SimpleGrantedAuthority(role.getRoleName()))
                 .collect(Collectors.toList());
     }
 
