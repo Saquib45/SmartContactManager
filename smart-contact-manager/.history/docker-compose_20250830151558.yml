@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  mysql:
+    image: mysql:8
+    container_name: mysql_db
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 9960844980&Ss
+      MYSQL_DATABASE: SCM
+
+    volumes: 
+     - ./mysql_data:/var/lib/mysql
+       

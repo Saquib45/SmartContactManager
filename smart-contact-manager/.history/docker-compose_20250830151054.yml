@@ -1,0 +1,10 @@
+version: "3.8"
+
+services:
+  msyql:
+    image: mysql:8
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 9960844980&Ss
+      MYSQL_ROOT_PASSWORD  
